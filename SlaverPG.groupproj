@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DEBDC02A-D8A5-422E-88B6-EE4FCD8DF736}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Slaver.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Slaver">
+        <MSBuild Projects="Slaver.dproj"/>
+    </Target>
+    <Target Name="Slaver:Clean">
+        <MSBuild Projects="Slaver.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Slaver:Make">
+        <MSBuild Projects="Slaver.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Slaver"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Slaver:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Slaver:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
